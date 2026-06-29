@@ -1,0 +1,65 @@
+:root {
+  /* Brand / state colors: main, light (10% opacity), dark (15% darker) */
+  --color-primary: #2563eb;
+  --color-primary-light: rgba(37, 99, 235, 0.1);
+  --color-primary-dark: #1f54c8;
+
+  --color-success: #16a34a;
+  --color-success-light: rgba(22, 163, 74, 0.1);
+  --color-success-dark: #138b3f;
+
+  --color-error: #dc2626;
+  --color-error-light: rgba(220, 38, 38, 0.1);
+  --color-error-dark: #bb2020;
+
+  --color-info: #0891b2;
+  --color-info-light: rgba(8, 145, 178, 0.1);
+  --color-info-dark: #077b97;
+
+  /* Base */
+  --color-white: #ffffff;
+  --color-black: #0a0a0a;
+
+  /* Gray scale */
+  --color-gray-900: #111827;
+  --color-gray-700: #374151;
+  --color-gray-600: #4b5563;
+  --color-gray-500: #6b7280;
+  --color-gray-400: #9ca3af;
+  --color-gray-300: #d1d5db;
+  --color-gray-200: #e5e7eb;
+  --color-gray-150: #eceef1;
+  --color-gray-100: #f3f4f6;
+
+  /* Opacity variants */
+  --color-white-100: rgba(255, 255, 255, 0.6);
+  --color-white-200: rgba(255, 255, 255, 0.8);
+  --color-white-300: rgba(255, 255, 255, 0.95);
+  --color-black-100: rgba(10, 10, 10, 0.05);
+  --color-black-200: rgba(10, 10, 10, 0.12);
+
+  /* Borders & shadow */
+  --color-border-light: #e5e7eb;
+  --color-shadow: rgba(15, 23, 42, 0.12);
+
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--color-gray-900);
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}

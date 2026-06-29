@@ -1,0 +1,37 @@
+.whiteboard-canvas {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  background-color: var(--color-gray-100);
+  background-image: radial-gradient(
+    var(--color-gray-300) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 22px 22px;
+  transition: background-color 0.15s ease;
+}
+
+.whiteboard-canvas.is-over {
+  background-color: var(--color-primary-light);
+}
+
+.whiteboard-grid {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+}
+
+.whiteboard-empty {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-400);
+  font-size: 15px;
+  pointer-events: none;
+}

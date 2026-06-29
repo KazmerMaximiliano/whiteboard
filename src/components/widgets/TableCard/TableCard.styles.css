@@ -1,0 +1,30 @@
+.table-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+.table-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+
+.table-card-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table-card-table td {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-gray-700);
+}
+
+.table-card-value {
+  text-align: right;
+  font-weight: 600;
+  color: var(--color-gray-900);
+}

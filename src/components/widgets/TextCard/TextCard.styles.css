@@ -1,0 +1,19 @@
+.text-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+.text-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-900);
+}
+
+.text-card-body {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-gray-600);
+}

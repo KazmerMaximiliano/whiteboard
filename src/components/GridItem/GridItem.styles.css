@@ -1,0 +1,81 @@
+.grid-item {
+  position: absolute;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease;
+}
+
+.grid-item:hover {
+  box-shadow: 0 6px 18px var(--color-shadow);
+}
+
+.grid-item-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.grid-item:hover .grid-item-toolbar {
+  opacity: 1;
+}
+
+.grid-item-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--color-gray-400);
+  cursor: grab;
+  padding: 4px;
+  border-radius: 6px;
+  touch-action: none;
+}
+
+.grid-item-handle:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-600);
+}
+
+.grid-item-handle:active {
+  cursor: grabbing;
+}
+
+.grid-item-body {
+  flex: 1;
+  min-height: 0;
+  padding: 0 16px 16px;
+  overflow: hidden;
+}
+
+.grid-item-resize {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 18px;
+  height: 18px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: se-resize;
+  touch-action: none;
+}
+
+.grid-item-resize::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-gray-400);
+  border-bottom: 2px solid var(--color-gray-400);
+}
