@@ -1,11 +1,9 @@
 import { Button } from "../Button/Button";
-import { Modal } from "../Modal/Modal";
 import { TrashIcon } from "../Icon/Icon";
+import { Modal } from "../Modal/Modal";
+import { formatDate } from "./LoadDialog.consts";
 import "./LoadDialog.styles.css";
 import type { LoadDialogProps } from "./LoadDialog.types";
-
-const formatDate = (timestamp: number): string =>
-  new Date(timestamp).toLocaleString();
 
 export const LoadDialog = ({
   open,

@@ -1,21 +1,10 @@
-import { clampPosition } from "../../utils/grid";
+import { clampPosition } from "../../utils";
+import { initialWhiteboardState } from "./WhiteboardProvider.consts";
 import type {
-  GridConfig,
   WhiteboardAction,
-  WhiteboardState,
+  WhiteboardState
 } from "./WhiteboardProvider.types";
 
-export const DEFAULT_GRID: GridConfig = {
-  columns: 12,
-  gap: 12,
-  maxWidth: 1280,
-  rowHeight: 80,
-};
-
-export const initialWhiteboardState: WhiteboardState = {
-  grid: DEFAULT_GRID,
-  widgets: [],
-};
 
 export const whiteboardReducer = (
   state: WhiteboardState,
@@ -39,12 +28,12 @@ export const whiteboardReducer = (
         widgets: state.widgets.map((widget) =>
           widget.id === action.id
             ? {
-                ...widget,
-                position: clampPosition(
-                  { ...widget.position, x: action.x, y: action.y },
-                  state.grid.columns,
-                ),
-              }
+              ...widget,
+              position: clampPosition(
+                { ...widget.position, x: action.x, y: action.y },
+                state.grid.columns,
+              ),
+            }
             : widget,
         ),
       };
@@ -54,12 +43,12 @@ export const whiteboardReducer = (
         widgets: state.widgets.map((widget) =>
           widget.id === action.id
             ? {
-                ...widget,
-                position: clampPosition(
-                  { ...widget.position, w: action.w, h: action.h },
-                  state.grid.columns,
-                ),
-              }
+              ...widget,
+              position: clampPosition(
+                { ...widget.position, w: action.w, h: action.h },
+                state.grid.columns,
+              ),
+            }
             : widget,
         ),
       };

@@ -1,14 +1,9 @@
-import type { DashboardConfig } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
-
-const INDEX_KEY = "whiteboard:dashboards";
+import type { DashboardConfig } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import { INDEX_KEY } from "./dashboardStorage.consts";
+import type { DashboardSummary } from "./dashboardStorage.types";
 
 const itemKey = (id: string): string => `whiteboard:dashboard:${id}`;
 
-export type DashboardSummary = {
-  id: string;
-  name: string;
-  updatedAt: number;
-};
 
 const readIndex = (): DashboardSummary[] => {
   try {

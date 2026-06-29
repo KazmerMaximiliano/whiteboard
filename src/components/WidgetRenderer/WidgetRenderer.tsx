@@ -1,7 +1,4 @@
-import { KpiCard } from "../widgets/KpiCard/KpiCard";
-import { ChartCard } from "../widgets/ChartCard/ChartCard";
-import { TextCard } from "../widgets/TextCard/TextCard";
-import { TableCard } from "../widgets/TableCard/TableCard";
+import { ChartCard, KpiCard, TableCard, TextCard } from "../../widgets";
 import type { WidgetRendererProps } from "./WidgetRenderer.types";
 
 export const WidgetRenderer = ({ kind }: WidgetRendererProps) => {

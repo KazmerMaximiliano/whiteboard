@@ -1,11 +1,7 @@
-import { deltaToCells, pointToCell } from "./grid";
-import type { GridMetrics } from "./grid";
-import type { WidgetInstance } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
 
-export type PointLike = {
-  left: number;
-  top: number;
-};
+import type { WidgetInstance } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import { deltaToCells, pointToCell, type GridMetrics } from "../grid/grid";
+import type { PointLike } from "./dnd.types";
 
 /**
  * Grid cell where a catalog item dropped onto the board should land, derived

@@ -3,7 +3,8 @@ import type {
   GridConfig,
   WidgetInstance,
 } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
-import type { GridMetrics } from "../../utils/grid";
+import type { GridMetrics } from "../../utils/grid/grid.types";
+
 
 export type WhiteboardCanvasProps = {
   widgets: WidgetInstance[];

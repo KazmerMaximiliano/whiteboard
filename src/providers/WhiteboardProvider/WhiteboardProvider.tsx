@@ -1,10 +1,8 @@
 import { useMemo, useReducer } from "react";
-import { createId } from "../../utils/id";
+import { createId } from "../../utils/id/id";
+import { initialWhiteboardState } from "./WhiteboardProvider.consts";
 import { WhiteboardContext } from "./WhiteboardProvider.context";
-import {
-  initialWhiteboardState,
-  whiteboardReducer,
-} from "./WhiteboardProvider.reducer";
+import { whiteboardReducer } from "./WhiteboardProvider.reducer";
 import type {
   WhiteboardContextValue,
   WhiteboardProviderProps,
@@ -26,8 +24,7 @@ export const WhiteboardProvider = ({ children }: WhiteboardProviderProps) => {
           widget: { id: createId(), kind, position },
         }),
       moveWidget: (id, x, y) => dispatch({ type: "MOVE_WIDGET", id, x, y }),
-      resizeWidget: (id, w, h) =>
-        dispatch({ type: "RESIZE_WIDGET", id, w, h }),
+      resizeWidget: (id, w, h) => dispatch({ type: "RESIZE_WIDGET", id, w, h }),
       removeWidget: (id) => dispatch({ type: "REMOVE_WIDGET", id }),
       updateGrid: (grid) => dispatch({ type: "UPDATE_GRID", grid }),
       loadDashboard: (dashboard) =>

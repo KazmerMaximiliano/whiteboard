@@ -1,15 +1,9 @@
+import type { FormEvent } from "react";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Modal } from "../Modal/Modal";
 import "./SaveDialog.styles.css";
-import type { FormEvent } from "react";
-import type { SaveDialogProps } from "./SaveDialog.types";
-
-type SaveDialogFormProps = {
-  defaultName: string;
-  onClose: () => void;
-  onSave: (name: string) => void;
-};
+import type { SaveDialogFormProps, SaveDialogProps } from "./SaveDialog.types";
 
 const SaveDialogForm = ({
   defaultName,

@@ -1,10 +1,9 @@
 import { useDroppable } from "@dnd-kit/core";
-import { GridItem } from "../GridItem/GridItem";
-import "./WhiteboardCanvas.styles.css";
 import type { CSSProperties } from "react";
+import { GridItem } from "../GridItem/GridItem";
+import { WHITEBOARD_DROPPABLE_ID } from "./Whiteboard.consts";
+import "./WhiteboardCanvas.styles.css";
 import type { WhiteboardCanvasProps } from "./WhiteboardCanvas.types";
-
-export const WHITEBOARD_DROPPABLE_ID = "whiteboard-grid";
 
 export const WhiteboardCanvas = ({
   widgets,

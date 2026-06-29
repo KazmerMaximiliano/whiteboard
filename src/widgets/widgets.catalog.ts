@@ -1,7 +1,4 @@
-import type {
-  GridPosition,
-  WidgetKind,
-} from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type { GridPosition, WidgetKind } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
 
 export type WidgetSize = Pick<GridPosition, "w" | "h">;
 

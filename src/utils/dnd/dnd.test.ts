@@ -1,7 +1,8 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import type { WidgetInstance } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type { GridMetrics } from "../grid/grid";
 import { resolveCatalogDropCell, resolveMovePosition } from "./dnd";
-import type { GridMetrics } from "./grid";
-import type { WidgetInstance } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
+
 
 const metrics: GridMetrics = {
   cellWidth: 90,

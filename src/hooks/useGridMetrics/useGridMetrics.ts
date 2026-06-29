@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { computeCellWidth } from "../utils/grid";
-import type { GridMetrics } from "../utils/grid";
-import type { GridConfig } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type { GridConfig } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import { computeCellWidth } from "../../utils";
+import type { GridMetrics } from "../../utils/grid/grid.types";
 
 /**
  * Measure the grid container and derive pixel geometry for the current grid

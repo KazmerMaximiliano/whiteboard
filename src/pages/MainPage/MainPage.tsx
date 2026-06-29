@@ -1,4 +1,4 @@
-import { useState } from "react";
+import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import {
   DndContext,
   DragOverlay,
@@ -6,53 +6,36 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { WhiteboardProvider } from "../../providers/WhiteboardProvider/WhiteboardProvider";
-import { useWhiteboard } from "../../hooks/useWhiteboard";
-import { useGridMetrics } from "../../hooks/useGridMetrics";
-import {
-  WhiteboardCanvas,
-  WHITEBOARD_DROPPABLE_ID,
-} from "../../components/WhiteboardCanvas/WhiteboardCanvas";
+import { useState } from "react";
 import { ComponentCatalog } from "../../components/ComponentCatalog/ComponentCatalog";
-import { Toolbar } from "../../components/Toolbar/Toolbar";
 import { GridSettingsPanel } from "../../components/GridSettingsPanel/GridSettingsPanel";
-import { SaveDialog } from "../../components/SaveDialog/SaveDialog";
 import { LoadDialog } from "../../components/LoadDialog/LoadDialog";
+import { SaveDialog } from "../../components/SaveDialog/SaveDialog";
+import { Toolbar } from "../../components/Toolbar/Toolbar";
+import { WHITEBOARD_DROPPABLE_ID } from "../../components/WhiteboardCanvas/Whiteboard.consts";
+import { WhiteboardCanvas } from "../../components/WhiteboardCanvas/WhiteboardCanvas";
 import { WidgetRenderer } from "../../components/WidgetRenderer/WidgetRenderer";
-import {
-  WIDGET_CATALOG,
-  getDefaultSize,
-} from "../../components/widgets/widgets.catalog";
-import { positionToStyle } from "../../utils/grid";
-import {
-  resolveCatalogDropCell,
-  resolveMovePosition,
-} from "../../utils/dnd";
-import { createId } from "../../utils/id";
+import { useGridMetrics, useWhiteboard } from "../../hooks";
+import { WhiteboardProvider } from "../../providers/WhiteboardProvider/WhiteboardProvider";
+import type { DashboardConfig } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+
 import {
   deleteDashboard,
   listDashboards,
   loadDashboard as readDashboard,
   saveDashboard,
-} from "../../services/dashboardStorage";
+} from "../../services/dashboardStorage/dashboardStorage";
+import type { DashboardSummary } from "../../services/dashboardStorage/dashboardStorage.types";
+
+import {
+  positionToStyle,
+  resolveCatalogDropCell,
+  resolveMovePosition,
+} from "../../utils";
+import { createId } from "../../utils/id/id";
+import { getDefaultSize, WIDGET_CATALOG } from "../../widgets/widgets.catalog";
 import "./MainPage.styles.css";
-import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
-import type { DashboardSummary } from "../../services/dashboardStorage";
-import type {
-  DashboardConfig,
-  WidgetKind,
-} from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
-
-type ActiveDrag =
-  | { type: "catalog"; kind: WidgetKind }
-  | { type: "move"; widgetId: string }
-  | null;
-
-type DragData = {
-  type?: "catalog" | "move";
-  kind?: WidgetKind;
-  widgetId?: string;
-};
+import type { ActiveDrag, DragData } from "./MainPage.types";
 
 const WhiteboardView = () => {
   const {
@@ -112,7 +95,9 @@ const WhiteboardView = () => {
     }
 
     if (data.type === "move" && data.widgetId) {
-      const widget = widgets.find((item) => item.id === data.widgetId);
+      const widget = widgets.find(
+        (item: { id: string | undefined }) => item.id === data.widgetId,
+      );
       if (!widget) {
         return;
       }
@@ -161,7 +146,9 @@ const WhiteboardView = () => {
       return null;
     }
     if (activeDrag.type === "catalog") {
-      const entry = WIDGET_CATALOG.find((item) => item.kind === activeDrag.kind);
+      const entry = WIDGET_CATALOG.find(
+        (item) => item.kind === activeDrag.kind,
+      );
       const style = positionToStyle(
         { x: 0, y: 0, ...getDefaultSize(activeDrag.kind) },
         metrics,
@@ -175,7 +162,9 @@ const WhiteboardView = () => {
         </div>
       );
     }
-    const widget = widgets.find((item) => item.id === activeDrag.widgetId);
+    const widget = widgets.find(
+      (item: { id: string }) => item.id === activeDrag.widgetId,
+    );
     if (!widget) {
       return null;
     }

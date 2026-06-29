@@ -1,10 +1,11 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
-import userEvent from "@testing-library/user-event";
 import { DndContext } from "@dnd-kit/core";
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
 import { GridItem } from "./GridItem";
-import type { GridMetrics } from "../../utils/grid";
+
 import type { WidgetInstance } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type { GridMetrics } from "../../utils/grid/grid.types";
 
 const metrics: GridMetrics = {
   cellWidth: 90,

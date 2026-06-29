@@ -1,15 +1,21 @@
-import { createRef } from "react";
-import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
 import { DndContext } from "@dnd-kit/core";
+import { render, screen } from "@testing-library/react";
+import { createRef } from "react";
+import { describe, expect, it, vi } from "vitest";
 import { WhiteboardCanvas } from "./WhiteboardCanvas";
-import type { GridMetrics } from "../../utils/grid";
+
 import type {
   GridConfig,
   WidgetInstance,
 } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type { GridMetrics } from "../../utils/grid/grid.types";
 
-const grid: GridConfig = { columns: 12, gap: 10, maxWidth: 1280, rowHeight: 80 };
+const grid: GridConfig = {
+  columns: 12,
+  gap: 10,
+  maxWidth: 1280,
+  rowHeight: 80,
+};
 const metrics: GridMetrics = {
   cellWidth: 90,
   rowHeight: 80,

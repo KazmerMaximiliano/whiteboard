@@ -1,12 +1,6 @@
-import { describe, it, expect } from "vitest";
-import {
-  clampPosition,
-  computeCellWidth,
-  deltaToCells,
-  pointToCell,
-  positionToStyle,
-} from "./grid";
-import type { GridMetrics } from "./grid";
+import { describe, expect, it } from "vitest";
+import { clampPosition, computeCellWidth, deltaToCells, pointToCell, positionToStyle } from "./grid";
+import type { GridMetrics } from "./grid.types";
 
 const metrics: GridMetrics = {
   cellWidth: 90,

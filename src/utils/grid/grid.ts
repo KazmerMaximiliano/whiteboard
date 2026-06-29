@@ -1,16 +1,6 @@
 import type { CSSProperties } from "react";
-import type { GridPosition } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
-
-/**
- * Pixel geometry of the grid, derived from the measured container width and the
- * current grid configuration. Drives all px <-> grid-cell conversions.
- */
-export type GridMetrics = {
-  cellWidth: number;
-  rowHeight: number;
-  gap: number;
-  columns: number;
-};
+import type { GridPosition } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type { GridMetrics } from "./grid.types";
 
 /**
  * Compute the width of a single column given the container width, column count

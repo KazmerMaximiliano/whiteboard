@@ -1,7 +1,6 @@
+import { BARS } from "./ChartCard.consts";
 import "./ChartCard.styles.css";
 import type { ChartCardProps } from "./ChartCard.types";
-
-const BARS = [45, 70, 35, 85, 55, 95, 60];
 
 export const ChartCard = ({ title = "Traffic" }: ChartCardProps) => {
   return (

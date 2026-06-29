@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CatalogItem } from "../CatalogItem/CatalogItem";
 import { ChevronUpIcon } from "../Icon/Icon";
-import { WIDGET_CATALOG } from "../widgets/widgets.catalog";
+
+import { WIDGET_CATALOG } from "../../widgets/widgets.catalog";
 import "./ComponentCatalog.styles.css";
 import type { ComponentCatalogProps } from "./ComponentCatalog.types";
 

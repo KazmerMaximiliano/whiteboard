@@ -1,0 +1,1 @@
+export const WHITEBOARD_DROPPABLE_ID = "whiteboard-grid";

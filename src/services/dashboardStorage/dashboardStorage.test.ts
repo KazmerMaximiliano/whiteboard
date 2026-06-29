@@ -1,11 +1,11 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
+import type { DashboardConfig } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
 import {
   deleteDashboard,
   listDashboards,
   loadDashboard,
   saveDashboard,
 } from "./dashboardStorage";
-import type { DashboardConfig } from "../providers/WhiteboardProvider/WhiteboardProvider.types";
 
 const makeConfig = (
   overrides: Partial<DashboardConfig> = {},

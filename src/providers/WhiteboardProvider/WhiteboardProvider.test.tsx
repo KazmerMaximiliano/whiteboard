@@ -1,12 +1,12 @@
-import { describe, it, expect } from "vitest";
 import { act, renderHook } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { useWhiteboard } from "../../hooks";
+import { WhiteboardProvider } from "./WhiteboardProvider";
 import {
   DEFAULT_GRID,
   initialWhiteboardState,
-  whiteboardReducer,
-} from "./WhiteboardProvider.reducer";
-import { WhiteboardProvider } from "./WhiteboardProvider";
-import { useWhiteboard } from "../../hooks/useWhiteboard";
+} from "./WhiteboardProvider.consts";
+import { whiteboardReducer } from "./WhiteboardProvider.reducer";
 import type {
   DashboardConfig,
   WidgetInstance,

@@ -2,9 +2,10 @@ import { useDraggable } from "@dnd-kit/core";
 import { Button } from "../Button/Button";
 import { GripIcon, TrashIcon } from "../Icon/Icon";
 import { WidgetRenderer } from "../WidgetRenderer/WidgetRenderer";
-import { positionToStyle } from "../../utils/grid";
-import "./GridItem.styles.css";
+
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
+import { positionToStyle } from "../../utils";
+import "./GridItem.styles.css";
 import type { GridItemProps } from "./GridItem.types";
 
 export const GridItem = ({

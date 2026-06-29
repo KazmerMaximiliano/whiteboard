@@ -6,3 +6,9 @@ export type GridSettingsPanelProps = {
   onClose: () => void;
   onApply: (grid: GridConfig) => void;
 };
+
+export type GridSettingsFormProps = {
+  grid: GridConfig;
+  onClose: () => void;
+  onApply: (grid: GridConfig) => void;
+};

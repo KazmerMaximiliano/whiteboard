@@ -1,25 +1,19 @@
+import type { FormEvent } from "react";
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { Modal } from "../Modal/Modal";
+import { clamp } from "./GridSettingsPanel.consts";
 import "./GridSettingsPanel.styles.css";
-import type { FormEvent } from "react";
-import type { GridSettingsPanelProps } from "./GridSettingsPanel.types";
-import type { GridConfig } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
+import type {
+  GridSettingsFormProps,
+  GridSettingsPanelProps,
+} from "./GridSettingsPanel.types";
 
-const clamp = (value: number, min: number, max: number): number => {
-  if (Number.isNaN(value)) {
-    return min;
-  }
-  return Math.min(Math.max(value, min), max);
-};
-
-type GridSettingsFormProps = {
-  grid: GridConfig;
-  onClose: () => void;
-  onApply: (grid: GridConfig) => void;
-};
-
-const GridSettingsForm = ({ grid, onClose, onApply }: GridSettingsFormProps) => {
+const GridSettingsForm = ({
+  grid,
+  onClose,
+  onApply,
+}: GridSettingsFormProps) => {
   const [columns, setColumns] = useState(grid.columns);
   const [gap, setGap] = useState(grid.gap);
   const [maxWidth, setMaxWidth] = useState(grid.maxWidth);

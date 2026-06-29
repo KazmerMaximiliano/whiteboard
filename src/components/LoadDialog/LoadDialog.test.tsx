@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+
+import type { DashboardSummary } from "../../services/dashboardStorage/dashboardStorage.types";
 import { LoadDialog } from "./LoadDialog";
-import type { DashboardSummary } from "../../services/dashboardStorage";
 
 const dashboards: DashboardSummary[] = [
   { id: "a", name: "Sales", updatedAt: 1000 },
@@ -51,9 +52,7 @@ describe("LoadDialog", () => {
         onDelete={onDelete}
       />,
     );
-    await userEvent.click(
-      screen.getByRole("button", { name: "Delete Ops" }),
-    );
+    await userEvent.click(screen.getByRole("button", { name: "Delete Ops" }));
     expect(onDelete).toHaveBeenCalledWith("b");
   });
 });

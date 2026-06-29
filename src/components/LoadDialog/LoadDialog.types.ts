@@ -1,4 +1,5 @@
-import type { DashboardSummary } from "../../services/dashboardStorage";
+import type { DashboardSummary } from "../../services/dashboardStorage/dashboardStorage.types";
+
 
 export type LoadDialogProps = {
   open: boolean;
