@@ -59,6 +59,19 @@ export const loadDashboard = (id: string): DashboardConfig | null => {
   }
 };
 
+/** Trigger a browser download of a dashboard as a formatted JSON file. */
+export const exportDashboard = (config: DashboardConfig): void => {
+  const blob = new Blob([JSON.stringify(config, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `${config.name || "dashboard"}.json`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+};
+
 /** Remove a dashboard and its index entry. */
 export const deleteDashboard = (id: string): void => {
   try {

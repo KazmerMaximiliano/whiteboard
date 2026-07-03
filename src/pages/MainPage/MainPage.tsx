@@ -21,6 +21,7 @@ import type { DashboardConfig } from "../../providers/WhiteboardProvider/Whitebo
 
 import {
   deleteDashboard,
+  exportDashboard,
   listDashboards,
   loadDashboard as readDashboard,
   saveDashboard,
@@ -120,6 +121,16 @@ const WhiteboardView = () => {
     setCurrent({ id, name });
   };
 
+  const handleExport = (): void => {
+    exportDashboard({
+      id: current?.id ?? createId(),
+      name: current?.name ?? "dashboard",
+      grid,
+      widgets,
+      updatedAt: Date.now(),
+    });
+  };
+
   const handleLoad = (id: string): void => {
     const config = readDashboard(id);
     if (config) {
@@ -202,6 +213,7 @@ const WhiteboardView = () => {
         onOpenSettings={() => setSettingsOpen(true)}
         onOpenSave={() => setSaveOpen(true)}
         onOpenLoad={openLoad}
+        onExport={handleExport}
       />
 
       <GridSettingsPanel

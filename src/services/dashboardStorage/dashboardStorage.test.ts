@@ -1,7 +1,8 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { DashboardConfig } from "../../providers/WhiteboardProvider/WhiteboardProvider.types";
 import {
   deleteDashboard,
+  exportDashboard,
   listDashboards,
   loadDashboard,
   saveDashboard,
@@ -54,6 +55,30 @@ describe("dashboardStorage", () => {
     deleteDashboard("dash-1");
     expect(loadDashboard("dash-1")).toBeNull();
     expect(listDashboards()).toHaveLength(0);
+  });
+
+  it("should download the config as a named JSON file", () => {
+    const config = makeConfig({ name: "Sales" });
+    const createUrl = vi
+      .spyOn(URL, "createObjectURL")
+      .mockReturnValue("blob:mock");
+    const revokeUrl = vi
+      .spyOn(URL, "revokeObjectURL")
+      .mockImplementation(() => {});
+    const click = vi
+      .spyOn(HTMLAnchorElement.prototype, "click")
+      .mockImplementation(() => {});
+
+    exportDashboard(config);
+
+    const blob = createUrl.mock.calls[0][0] as Blob;
+    expect(blob.type).toBe("application/json");
+    expect(click).toHaveBeenCalledTimes(1);
+    expect(revokeUrl).toHaveBeenCalledWith("blob:mock");
+
+    createUrl.mockRestore();
+    revokeUrl.mockRestore();
+    click.mockRestore();
   });
 
   it("should tolerate corrupt stored data", () => {
