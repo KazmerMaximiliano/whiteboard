@@ -30,11 +30,11 @@ describe("resolveMovePosition", () => {
     position: { x: 2, y: 1, w: 3, h: 2 },
   };
 
-  it("should offset the widget by whole cells", () => {
-    // delta 210px / 100 = 2 cols, 175px / 90 = 2 rows
-    expect(resolveMovePosition(widget, { x: 210, y: 175 }, metrics)).toEqual({
+  it("should offset x by whole cells but y by fractional rows", () => {
+    // delta 210px / 100 = 2 cols; 45px / 90 = 0.5 row
+    expect(resolveMovePosition(widget, { x: 210, y: 45 }, metrics)).toEqual({
       x: 4,
-      y: 3,
+      y: 1.5,
     });
   });
 

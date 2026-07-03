@@ -19,13 +19,17 @@ export const resolveCatalogDropCell = (
   );
 
 /**
- * New top-left cell for a moved widget given the drag delta in pixels.
+ * New top-left position for a moved widget given the drag delta in pixels.
+ * x snaps to whole columns; y follows the pointer as a fractional row so the
+ * widget moves finely on the vertical axis instead of jumping by a full row.
  */
 export const resolveMovePosition = (
   widget: WidgetInstance,
   delta: { x: number; y: number },
   metrics: GridMetrics,
 ): { x: number; y: number } => {
-  const { dx, dy } = deltaToCells(delta.x, delta.y, metrics);
+  const { dx } = deltaToCells(delta.x, delta.y, metrics);
+  const stepY = metrics.rowHeight + metrics.gap;
+  const dy = stepY > 0 ? delta.y / stepY : 0;
   return { x: widget.position.x + dx, y: widget.position.y + dy };
 };
