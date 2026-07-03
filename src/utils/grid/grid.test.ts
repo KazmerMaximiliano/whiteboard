@@ -51,12 +51,12 @@ describe("clampPosition", () => {
     });
   });
 
-  it("should round fractional cells", () => {
+  it("should round x, y and w but keep h continuous", () => {
     expect(clampPosition({ x: 1.6, y: 2.2, w: 2.4, h: 1.5 }, 12)).toEqual({
       x: 2,
       y: 2,
       w: 2,
-      h: 2,
+      h: 1.5,
     });
   });
 });

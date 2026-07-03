@@ -20,13 +20,16 @@ export const WhiteboardCanvas = ({
     setNodeRef(node);
   };
 
-  const style: CSSProperties = {
+  const style = {
     maxWidth: grid.maxWidth > 0 ? grid.maxWidth : undefined,
-  };
+    "--wb-cell-width": `${metrics.cellWidth}px`,
+    "--wb-gap": `${metrics.gap}px`,
+  } as CSSProperties;
 
   return (
     <div className={`whiteboard-canvas${isOver ? " is-over" : ""}`}>
       <div ref={setRefs} className="whiteboard-grid" style={style}>
+        <div className="whiteboard-grid-overlay" aria-hidden="true" />
         {widgets.map((widget) => (
           <GridItem
             key={widget.id}

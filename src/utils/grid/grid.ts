@@ -19,14 +19,15 @@ export const computeCellWidth = (
 
 /**
  * Keep a position inside the grid bounds: width within [1, columns], height >= 1,
- * and the widget fully visible horizontally. All values are rounded to whole cells.
+ * and the widget fully visible horizontally. x, y and w snap to whole cells;
+ * h stays continuous so vertical resizing is pixel-fine.
  */
 export const clampPosition = (
   position: GridPosition,
   columns: number,
 ): GridPosition => {
   const w = Math.min(Math.max(1, Math.round(position.w)), columns);
-  const h = Math.max(1, Math.round(position.h));
+  const h = Math.max(1, position.h);
   const x = Math.min(Math.max(0, Math.round(position.x)), columns - w);
   const y = Math.max(0, Math.round(position.y));
   return { x, y, w, h };

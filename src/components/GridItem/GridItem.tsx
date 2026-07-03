@@ -36,13 +36,16 @@ export const GridItem = ({
     const startH = widget.position.h;
     const stepX = metrics.cellWidth + metrics.gap;
     const stepY = metrics.rowHeight + metrics.gap;
+    const startHpx = startH * metrics.rowHeight + (startH - 1) * metrics.gap;
 
     const handleMove = (moveEvent: PointerEvent): void => {
       const dCols =
         stepX > 0 ? Math.round((moveEvent.clientX - startX) / stepX) : 0;
-      const dRows =
-        stepY > 0 ? Math.round((moveEvent.clientY - startY) / stepY) : 0;
-      onResize(widget.id, startW + dCols, startH + dRows);
+      // Vertical follows the pointer pixel-for-pixel, then converts back to
+      // fractional rows so the height snaps finely instead of jumping by a row.
+      const newHpx = startHpx + (moveEvent.clientY - startY);
+      const newH = stepY > 0 ? (newHpx + metrics.gap) / stepY : startH;
+      onResize(widget.id, startW + dCols, newH);
     };
     const handleUp = (): void => {
       window.removeEventListener("pointermove", handleMove);
